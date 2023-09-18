@@ -115,7 +115,7 @@ function Home() {
       {confetti}
       <div className={styles.header}>
         <h1 className={styles.headerTitle}>
-          Le mémorie de l'IA 🧠 
+          Le memory de l'IA 🧠 
         </h1>
         <div className={styles.headerDivider} />
       </div>
