@@ -6,22 +6,22 @@ import Confetti from 'react-confetti';
 
 function Home() {
   const deck = [
-    { id: 1, name: 'billiard ball', image: '/billiardball.svg' },
-    { id: 2, name: 'billiard ball', image: '/billiardball.svg' },
-    { id: 3, name: 'bubble tea', image: '/bubbletea.svg' },
-    { id: 4, name: 'bubble tea', image: '/bubbletea.svg' },
-    { id: 5, name: 'cactus', image: '/cactus.svg' },
-    { id: 6, name: 'cactus', image: '/cactus.svg' },
-    { id: 7, name: 'dog', image: '/dog.svg' },
-    { id: 8, name: 'dog', image: '/dog.svg' },
-    { id: 9, name: 'laptop', image: '/laptop.svg' },
-    { id: 10, name: 'laptop', image: '/laptop.svg' },
-    { id: 11, name: 'octopus', image: '/octopus.svg' },
-    { id: 12, name: 'octopus', image: '/octopus.svg' },
-    { id: 13, name: 'strawberry', image: '/strawberry.svg' },
-    { id: 14, name: 'strawberry', image: '/strawberry.svg' },
-    { id: 15, name: 'sunglasses', image: '/sunglasses.svg' },
-    { id: 16, name: 'sunglasses', image: '/sunglasses.svg' },
+    { id: 1, name: 'Maps', image: '/maps.svg' },
+    { id: 2, name: 'Maps', image: '/maps.svg' },
+    { id: 3, name: 'YouTube', image: '/youtube.svg' },
+    { id: 4, name: 'YouTube', image: '/youtube.svg' },
+    { id: 5, name: 'Spotify', image: '/spotify.svg' },
+    { id: 6, name: 'Spotify', image: '/spotify.svg' },
+    { id: 7, name: 'Outlook', image: '/outlook.svg' },
+    { id: 8, name: 'Outlook', image: '/outlook.svg' },
+    { id: 9, name: 'Android', image: '/android.svg' },
+    { id: 10, name: 'Android', image: '/android.svg' },
+    { id: 11, name: 'Meteo France', image: '/meteo-france.svg' },
+    { id: 12, name: 'Meteo France', image: '/meteo-france.svg' },
+    { id: 13, name: 'Tesla', image: '/tesla.svg' },
+    { id: 14, name: 'Tesla', image: '/tesla.svg' },
+    { id: 15, name: 'Firefox', image: '/firefox.svg' },
+    { id: 16, name: 'Firefox', image: '/firefox.svg' },
   ];
 
   const [shuffleDeck, setShuffleDeck] = useState([]);
@@ -38,6 +38,7 @@ function Home() {
 
   const [selected, setSelected] = useState([]);
   const [confetti, setConfetti] = useState();
+  const [explained, setExplained] = useState([]);
 
   const selectCard = (id) => {
     setSelected([...selected, id]);
@@ -45,6 +46,7 @@ function Home() {
 
   useEffect(()=>{
     if(selected.length === deck.length){
+      setExplained([...explained, deck[selected[selected.length-1]-1].name])
       ///
       setConfetti(<Confetti
         width='1500%'
@@ -69,6 +71,11 @@ function Home() {
     }else if (selected.length === 0 || selected.length % 2 !== 0){
       setSelected(selected)
     }else{
+      if(deck[selected[selected.length-2]-1].name === deck[selected[selected.length-1]-1].name){
+        if(!explained.includes(deck[selected[selected.length-1]-1].name)){
+          setExplained([...explained, deck[selected[selected.length-1]-1].name])
+        }
+      }
       setTimeout(() => {
         if(deck[selected[selected.length-2]-1].name !== deck[selected[selected.length-1]-1].name){
           setSelected(selected.filter((e,i) => {
@@ -80,6 +87,13 @@ function Home() {
       }, 1000);
     }
   },[selected])
+
+  useEffect(()=>{
+    if(explained.length > 0){
+      ///popup explanation
+      console.log(explained[explained.length-1])
+    }
+  },[explained])
 
   const cardsToDisplay = shuffleDeck.map((card) => {
     return (
@@ -101,7 +115,7 @@ function Home() {
       {confetti}
       <div className={styles.header}>
         <h1 className={styles.headerTitle}>
-          Memory Game 🧠
+          Le mémorie de l'IA 🧠 
         </h1>
         <div className={styles.headerDivider} />
       </div>

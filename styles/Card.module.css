@@ -46,7 +46,7 @@ card:hover .cardBack {
 
 .cardBack {
   transform: rotateY(180deg);
-  background-color: rgb(3, 43, 58);
+  background-color: rgb(217, 217, 217);
 }
 
 .cardFront {
