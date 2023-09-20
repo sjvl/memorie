@@ -6,23 +6,25 @@ import Confetti from 'react-confetti';
 
 function Home() {
   const deck = [
-    { id: 1, name: 'Maps', image: '/maps.svg' },
-    { id: 2, name: 'Maps', image: '/maps.svg' },
-    { id: 3, name: 'YouTube', image: '/youtube.svg' },
-    { id: 4, name: 'YouTube', image: '/youtube.svg' },
-    { id: 5, name: 'Spotify', image: '/spotify.svg' },
-    { id: 6, name: 'Spotify', image: '/spotify.svg' },
-    { id: 7, name: 'Outlook', image: '/outlook.svg' },
-    { id: 8, name: 'Outlook', image: '/outlook.svg' },
-    { id: 9, name: 'Android', image: '/android.svg' },
-    { id: 10, name: 'Android', image: '/android.svg' },
-    { id: 11, name: 'Meteo France', image: '/meteo-france.svg' },
-    { id: 12, name: 'Meteo France', image: '/meteo-france.svg' },
-    { id: 13, name: 'Tesla', image: '/tesla.svg' },
-    { id: 14, name: 'Tesla', image: '/tesla.svg' },
-    { id: 15, name: 'Firefox', image: '/firefox.svg' },
-    { id: 16, name: 'Firefox', image: '/firefox.svg' },
+    { id: 1, name: 'Maps', image: '/maps.svg', msg: 'Une IA détermine le meilleur trajet' },
+    { id: 2, name: 'Maps', image: '/maps.svg', msg: 'Une IA détermine le meilleur trajet' },
+    { id: 3, name: 'YouTube', image: '/youtube.svg', msg: 'Une IA me recommande des vidéos' },
+    { id: 4, name: 'YouTube', image: '/youtube.svg', msg: 'Une IA me recommande des vidéos' },
+    { id: 5, name: 'Spotify', image: '/spotify.svg', msg: 'Une IA me recommande des morceaux de musique' },
+    { id: 6, name: 'Spotify', image: '/spotify.svg', msg: 'Une IA me recommande des morceaux de musique' },
+    { id: 7, name: 'Outlook', image: '/outlook.svg', msg: 'Une IA peut détecter les spams' },
+    { id: 8, name: 'Outlook', image: '/outlook.svg', msg: 'Une IA peut détecter les spams' },
+    { id: 9, name: 'Android', image: '/android.svg', msg: 'Une IA me suggère des applications' },
+    { id: 10, name: 'Android', image: '/android.svg', msg: 'Une IA me suggère des applications' },
+    { id: 11, name: 'Meteo France', image: '/meteo-france.svg', msg: 'Une IA prédit la météo' },
+    { id: 12, name: 'Meteo France', image: '/meteo-france.svg', msg: 'Une IA prédit la météo' },
+    { id: 13, name: 'Tesla', image: '/tesla.svg', msg: 'Une IA peut piloter ma voiture' },
+    { id: 14, name: 'Tesla', image: '/tesla.svg', msg: 'Une IA peut piloter ma voiture' },
+    { id: 15, name: 'Firefox', image: '/firefox.svg', msg: 'Une IA personnalise la réponse à ma recherche' },
+    { id: 16, name: 'Firefox', image: '/firefox.svg', msg: 'Une IA personnalise la réponse à ma recherche' },
   ];
+  
+  const [popup, setPopup] = useState('');
 
   const [shuffleDeck, setShuffleDeck] = useState([]);
 
@@ -46,7 +48,7 @@ function Home() {
 
   useEffect(()=>{
     if(selected.length === deck.length){
-      setExplained([...explained, deck[selected[selected.length-1]-1].name])
+      setExplained([...explained, deck[selected[selected.length-1]-1].msg])
       ///
       setConfetti(<Confetti
         width='1500%'
@@ -67,13 +69,15 @@ function Home() {
         }
         setShuffleDeck(deck);
         setConfetti();
-      }, 3000);
+        setExplained([])
+        setPopup("")
+      }, 4000);
     }else if (selected.length === 0 || selected.length % 2 !== 0){
       setSelected(selected)
     }else{
       if(deck[selected[selected.length-2]-1].name === deck[selected[selected.length-1]-1].name){
-        if(!explained.includes(deck[selected[selected.length-1]-1].name)){
-          setExplained([...explained, deck[selected[selected.length-1]-1].name])
+        if(!explained.includes(deck[selected[selected.length-1]-1].msg)){
+          setExplained([...explained, deck[selected[selected.length-1]-1].msg])
         }
       }
       setTimeout(() => {
@@ -90,8 +94,7 @@ function Home() {
 
   useEffect(()=>{
     if(explained.length > 0){
-      ///popup explanation
-      console.log(explained[explained.length-1])
+      setPopup(explained[explained.length-1])
     }
   },[explained])
 
@@ -125,6 +128,15 @@ function Home() {
           {cardsToDisplay}
         </div>
       </div>
+
+      {popup && 
+      <div onClick={()=> setPopup("")} className={styles.popup}>
+        <div className={styles.modal}>
+          {popup}
+        </div>
+      </div>
+      }
+      
     </div>
   );
 }
