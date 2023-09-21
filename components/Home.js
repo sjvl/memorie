@@ -6,22 +6,22 @@ import Confetti from 'react-confetti';
 
 function Home() {
   const deck = [
-    { id: 1, name: 'Maps', image: '/maps.svg', msg: 'Une IA détermine le meilleur trajet' },
-    { id: 2, name: 'Maps', image: '/maps.svg', msg: 'Une IA détermine le meilleur trajet' },
-    { id: 3, name: 'YouTube', image: '/youtube.svg', msg: 'Une IA me recommande des vidéos' },
-    { id: 4, name: 'YouTube', image: '/youtube.svg', msg: 'Une IA me recommande des vidéos' },
-    { id: 5, name: 'Spotify', image: '/spotify.svg', msg: 'Une IA me recommande des morceaux de musique' },
-    { id: 6, name: 'Spotify', image: '/spotify.svg', msg: 'Une IA me recommande des morceaux de musique' },
-    { id: 7, name: 'Outlook', image: '/outlook.svg', msg: 'Une IA peut détecter les spams' },
-    { id: 8, name: 'Outlook', image: '/outlook.svg', msg: 'Une IA peut détecter les spams' },
-    { id: 9, name: 'Android', image: '/android.svg', msg: 'Une IA me suggère des applications' },
-    { id: 10, name: 'Android', image: '/android.svg', msg: 'Une IA me suggère des applications' },
-    { id: 11, name: 'Meteo France', image: '/meteo-france.svg', msg: 'Une IA prédit la météo' },
-    { id: 12, name: 'Meteo France', image: '/meteo-france.svg', msg: 'Une IA prédit la météo' },
-    { id: 13, name: 'Tesla', image: '/tesla.svg', msg: 'Une IA peut piloter ma voiture' },
-    { id: 14, name: 'Tesla', image: '/tesla.svg', msg: 'Une IA peut piloter ma voiture' },
-    { id: 15, name: 'Firefox', image: '/firefox.svg', msg: 'Une IA personnalise la réponse à ma recherche' },
-    { id: 16, name: 'Firefox', image: '/firefox.svg', msg: 'Une IA personnalise la réponse à ma recherche' },
+    { id: 1, name: 'Maps', image: '/maps.svg', msg: 'Une IA peut déterminer le meilleur trajet selon la circulation, les travaux ou acccidents.' },
+    { id: 2, name: 'Maps', image: '/maps.svg', msg: 'Une IA peut déterminer le meilleur trajet selon la circulation, les travaux ou acccidents.' },
+    { id: 3, name: 'YouTube', image: '/youtube.svg', msg: 'Une IA peut recommander des vidéos selon mes centres d’intérêt.' },
+    { id: 4, name: 'YouTube', image: '/youtube.svg', msg: 'Une IA peut recommander des vidéos selon mes centres d’intérêt.' },
+    { id: 5, name: 'Spotify', image: '/spotify.svg', msg: 'Une IA peut recommander des morceaux de musique selon mes goûts.' },
+    { id: 6, name: 'Spotify', image: '/spotify.svg', msg: 'Une IA peut recommander des morceaux de musique selon mes goûts.' },
+    { id: 7, name: 'Outlook', image: '/outlook.svg', msg: 'Une IA peut détecter les spams en fonction du contenu d’un message ou de l’adresse d’un destinataire.' },
+    { id: 8, name: 'Outlook', image: '/outlook.svg', msg: 'Une IA peut détecter les spams en fonction du contenu d’un message ou de l’adresse d’un destinataire.' },
+    { id: 9, name: 'Android', image: '/android.svg', msg: 'Une IA peut identifier mes contacts dans les photos que je prends ou rédiger un message lorsque je lui demande.' },
+    { id: 10, name: 'Android', image: '/android.svg', msg: 'Une IA peut identifier mes contacts dans les photos que je prends ou rédiger un message lorsque je lui demande.' },
+    { id: 11, name: 'Meteo France', image: '/meteo-france.svg', msg: 'Une IA peut prédire le temps qu’il fera, les risques d’orages ou de catastrophes.' },
+    { id: 12, name: 'Meteo France', image: '/meteo-france.svg', msg: 'Une IA peut prédire le temps qu’il fera, les risques d’orages ou de catastrophes.' },
+    { id: 13, name: 'Tesla', image: '/tesla.svg', msg: 'Une IA peut corriger ma conduite lorsque je suis fatigué ou innatentif.' },
+    { id: 14, name: 'Tesla', image: '/tesla.svg', msg: 'Une IA peut corriger ma conduite lorsque je suis fatigué ou innatentif.' },
+    { id: 15, name: 'Firefox', image: '/firefox.svg', msg: 'Une IA peut personnaliser les réponses à ma recherche en fonction de mes recherches précédentes, de mon identité ou de ma position.' },
+    { id: 16, name: 'Firefox', image: '/firefox.svg', msg: 'Une IA peut personnaliser les réponses à ma recherche en fonction de mes recherches précédentes, de mon identité ou de ma position.' },
   ];
   
   const [popup, setPopup] = useState('');
@@ -117,9 +117,12 @@ function Home() {
     <div className={styles.home}>
       {confetti}
       <div className={styles.header}>
-        <h1 className={styles.headerTitle}>
-          Le memory de l'IA 🧠 
-        </h1>
+        <div className={styles.headerContent}>
+          <h1 className={styles.headerTitle}>
+            Le memory de l'IA 🧠 
+          </h1>
+
+        </div>
         <div className={styles.headerDivider} />
       </div>
 
