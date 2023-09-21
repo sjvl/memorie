@@ -37,7 +37,9 @@
   max-width: 35vw;
   opacity: .8;
   border-radius: 30px;
-  background-color: snow;
+  background-color: #0478BE;
+  color: white;
+  font-size: larger;
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 2s; /* Firefox < 16 */
         -ms-animation: fadein 2s; /* Internet Explorer */

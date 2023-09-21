@@ -39,7 +39,7 @@
 
 .card:hover .cardFront,
 card:hover .cardBack {
-  border-color: #86f3df;
+  border-color: #0478BE;
   transform: scale(1.15);
 }
 
